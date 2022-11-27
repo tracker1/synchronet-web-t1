@@ -14,6 +14,7 @@
   }
 
   var res = Object.assign({}, http_reply, {
+    body: undefined,
     header: function (name, value) {
       if (!name) throw new Error("name is required");
       if (value === undefined) {
@@ -85,12 +86,9 @@
       var body = res.body;
       if (typeof body === "string") {
         write(res.body);
-        return;
+      } else if (body !== undefined) {
+        write(JSON.stringify(body));
       }
-      if (body === null || body === undefined) {
-        return;
-      }
-      write(JSON.stringify(body));
       ctx.log.response("Response sent.");
       return;
     },

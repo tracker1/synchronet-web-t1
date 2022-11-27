@@ -12,7 +12,7 @@ try {
 
   // nocache by default
   ctx.res.nocache();
-  load({ ctx: ctx }, "sbbs-api/router.js");
+  load({ ctx: ctx }, "sbbs-api/routes.js");
   ctx.res.end();
   ctx.log.response("End Request");
 } catch (error) {
@@ -32,6 +32,9 @@ try {
         status: statusCode,
         statusText: ctx.app.status.getReasonPhrase(statusCode),
         message: message,
+      },
+      detail: {
+        req: ctx.req,
       },
     })
     .end();

@@ -8,6 +8,7 @@
         request: http_request.request_string,
       };
     },
+    path: http_request.virtual_path,
   });
   return req;
 })(this.ctx);

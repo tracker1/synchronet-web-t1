@@ -80,12 +80,19 @@
     if (args.length === 1 && (args[0] === null || args[0] === undefined))
       return null;
     const item = {
-      level: getLogName(level),
       logged: new Date(),
+      level: getLogName(level),
+      req: undefined,
+      res: undefined,
       detail: normalizeDetail.apply(this, args),
     };
     if (logLevel > LEVELS.INFO) {
       clearStack(item.detail);
+    }
+    if (item.detail._hoist) {
+      var h = item.detail._hoist;
+      item.detail._hoist = undefined;
+      Object.assign(item, h);
     }
 
     return item;
@@ -106,6 +113,7 @@
       var args = Array.from(arguments);
       args.unshift(iLevel);
       args.unshift(logLevel);
+      // log(1, JSON.stringify({ args: args }));
 
       // format JSON for logging
       var item = formatMessage.apply(this, args);
@@ -113,16 +121,14 @@
         return; // nothing to output - filtered by logLevel
       }
 
-      // JSON stringified version
-      var item2 = JSON.stringify(item);
-
       if (!pretty) {
-        logFn(oLevel, JSON.stringify(item2));
+        logFn(oLevel, JSON.stringify(item));
         return;
       }
 
-      const { level, logged, detail } = item;
-      logFn(oLevel, [logged, iLevel, JSON.stringify(detail)].join(" "));
+      var logged = item.logged;
+      var detail = Object.assign({}, item, { level: undefined, logged: undefined });
+      logFn(oLevel, [logged, sLevel, JSON.stringify(detail)].join(" "));
     };
   }
 

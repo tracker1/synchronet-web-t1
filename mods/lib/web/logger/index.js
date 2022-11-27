@@ -1,4 +1,4 @@
-(function (logFn, ctx) {
+(function (logFn) {
   var baseLogger = load({ log: logFn }, "lib/logger.js");
 
   function makeContextLogger(method, addResponse) {
@@ -8,14 +8,16 @@
         null,
         Array.from(arguments)
       );
-      detail.req = {
-        todo: "request details here",
-      };
-      if (addResponse) {
-        detail.res = {
+      detail._hoist = {
+        req: {
+          todo: "request details here",
+        },
+        res: addResponse ? {
           todo: "response details here",
-        };
-      }
+        } : undefined,
+      };
+
+      // logFn(1, "*** TEST ***: " + JSON.stringify({ detail: detail }))
       sMethod(detail);
     };
   }
@@ -36,4 +38,4 @@
   });
 
   return contextLogger;
-})(this.log, this.ctx || {});
+})(this.log);

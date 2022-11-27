@@ -13,11 +13,11 @@
     "url": "https://github.com/tracker1/synchronet-web-t1/issues"
   },
   "homepage": "https://github.com/tracker1/synchronet-web-t1#readme",
-  "scripts": {
-    "start": "nodemon --watch mods --watch web --exec npm run api:deploy",
-    "api:deploy": "cp -rf ./web/* ~/sbbs/web/ && cp -rf ./mods/* ~/sbbs/mods/"
-  },
   "dependencies": {
     "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "start": "nodemon --watch mods --watch web -e js,ssjs,json --exec npm run api:deploy",
+    "api:deploy": "cp -rf ./web/* ~/sbbs/web/ && cp -rf ./mods/* ~/sbbs/mods/"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "editor.rulers": [76, 80],
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.ssjs": "javascript",
+    "*.msg": "plaintext",
+    "*.ans": "plaintext",
+    "*.asc": "plaintext",
+    "*.rip": "plaintext",
+    "*.nfo": "plaintext",
+    "*.tic": "plaintext",
+    "appsettings.json": "jsonc",
+    "appsettings.*.json": "jsonc"
+  },
+  "files.eol": "\n",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[plaintext]": {
+    "files.encoding": "cp437",
+    "files.eol": "\r\n",
+    "editor.renderControlCharacters": true
+  }
+}
