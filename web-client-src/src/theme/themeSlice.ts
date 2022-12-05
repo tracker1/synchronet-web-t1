@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppState, AppThunk } from '../state/store';
 
+const storageKey = 'theme-mode';
+const browserDefault = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
+const defaultMode = localStorage.getItem(storageKey) || browserDefault;
+
 export interface ThemeState {
   mode: 'dark' | 'light';
 }
 
 const initialState: ThemeState = {
-  mode: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light',
+  mode: defaultMode === 'dark' ? 'dark' : 'light',
 };
 
 export const themeSlice = createSlice({
@@ -15,6 +19,11 @@ export const themeSlice = createSlice({
   reducers: {
     toggleDarkMode: (state) => {
       state.mode = state.mode == 'dark' ? 'light' : 'dark';
+      if (state.mode === browserDefault) {
+        localStorage.removeItem(storageKey);
+      } else {
+        localStorage.setItem(storageKey, state.mode);
+      }
     },
   },
 });
