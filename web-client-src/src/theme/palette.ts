@@ -1,3 +1,17 @@
+export enum monoAmberPalette {
+  dark = '#997300',
+  main = '#ffc000',
+  bright = '#ffd966',
+  contrastText = '#000000',
+}
+
+export enum monoGreenPalette {
+  dark = '#007700',
+  main = '#00aa00',
+  bright = '#33ff33',
+  contrastText = '#000000',
+}
+
 export enum egaPalette {
   black = '#000000',
   blue = '#0000aa',

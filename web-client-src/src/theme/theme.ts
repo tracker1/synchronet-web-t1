@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { createTheme } from '@mui/material/styles';
-import { egaPalette } from './palette';
+import { egaPalette, monoAmberPalette, monoGreenPalette } from './palette';
+import { useThemeSlice } from './theme-hooks';
 
 const paletteColors = Object.entries(egaPalette).reduce(
   (o, [key, value]) => Object.assign(o, { [key]: ({ main: value }) }),
@@ -8,30 +9,37 @@ const paletteColors = Object.entries(egaPalette).reduce(
 );
 
 export const useTheme = () => {
-  // can use redux selectors, etc here,
+  const { mode } = useThemeSlice();
+  const isDark = (mode === "dark");
+
+  const dependencies = [mode];
   return useMemo(
     () => createTheme({
       colors: { ...egaPalette },
       shape: {
         borderRadius: 4,
       },
+      typography: {
+        fontFamily: "Inconsolata, \"Consolas\", \"Fira Code\", Roboto, Helvetica, Arial, sans-serif",
+        fontSize: 16,
+      },
       palette: {
-        mode: 'dark',
+        mode,
         background: {
-          default: egaPalette.brightBlack,
-          paper: '#080808',
+          default: isDark ? egaPalette.brightBlack : egaPalette.lightGray,
+          paper: isDark ? '#080808' : '#efefef',
         },
         text: {
-          primary: egaPalette.lightGray,
+          primary: isDark ? egaPalette.lightGray : egaPalette.black,
         },
         ...paletteColors,
         primary: {
-          main: egaPalette.cyan,
-          contrastText: "rgba(255, 255, 255, 0.87)",
+          main: egaPalette.blue,
+          // contrastText: isDark ? "rgba(0, 0, 0, 0.87)" : "rgba(255, 255, 255, 0.87)",
         },
         secondary: {
           main: egaPalette.magenta,
-          contrastText: "rgba(255, 255, 255, 0.87)",
+          // contrastText: isDark ? "rgba(0, 0, 0, 0.87)" : "rgba(255, 255, 255, 0.87)",
         },
         success: {
           main: egaPalette.green,
@@ -47,7 +55,5 @@ export const useTheme = () => {
         },
       }
     }),
-    [
-      // TODO: theme dependencies go here
-    ])
+    dependencies)
 };
