@@ -37,7 +37,7 @@ export default function HeaderBar() {
   return (
     <header>
       <HideOnScroll>
-        <AppBar sx={{ flexGrow: 1, zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <AppBar color="primary" enableColorOnDark sx={{ flexGrow: 1, zIndex: (theme) => theme.zIndex.drawer + 1 }}>
           <Toolbar>
             <IconButton
               size="large"

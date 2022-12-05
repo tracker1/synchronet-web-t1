@@ -43,13 +43,13 @@ export function Counter() {
                 value={incrementAmount}
                 onChange={(e) => setIncrementAmount(~~e.target.value || 1)}
               />
-              <Button variant="contained" onClick={() => action.incrementByAmount(incrementValue)}>
+              <Button variant="contained" color="secondary" onClick={() => action.incrementByAmount(incrementValue)}>
                 Add Amount
               </Button>
-              <Button variant="contained" onClick={() => action.incrementAsync(incrementValue)}>
+              <Button variant="contained" color="secondary" onClick={() => action.incrementAsync(incrementValue)}>
                 Add Async
               </Button>
-              <Button variant="contained" onClick={() => action.incrementIfOdd(incrementValue)}>
+              <Button variant="contained" color="secondary" onClick={() => action.incrementIfOdd(incrementValue)}>
                 Add If Odd
               </Button>
             </Stack>
