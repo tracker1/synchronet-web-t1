@@ -2,7 +2,7 @@ import React from 'react';
 import { Theme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from './theme';
-import { ThisTypeNode } from 'typescript';
+import '../types';
 
 const InnerThemeContext = React.memo(({ theme, children }: { theme: Theme, children: any }) => {
   console.log('theme', theme);

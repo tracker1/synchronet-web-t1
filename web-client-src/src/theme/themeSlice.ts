@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppState, AppThunk } from '../state/store';
+import { createSlice } from '@reduxjs/toolkit';
+import { AppState } from '../state/store';
+import '../types';
 
 const storageKey = 'theme-mode';
 const browserDefault = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'

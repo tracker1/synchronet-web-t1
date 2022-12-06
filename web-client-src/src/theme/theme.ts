@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, PaletteOptions } from '@mui/material/styles';
 import { egaPalette, monoAmberPalette, monoGreenPalette } from './palette';
 import { useThemeSlice } from './theme-hooks';
+import '../types';
 
-const paletteColors = Object.entries(egaPalette).reduce(
+const paletteColors: Partial<PaletteOptions> = Object.entries(egaPalette).reduce(
   (o, [key, value]) => Object.assign(o, { [key]: ({ main: value }) }),
   {}
 );
@@ -15,7 +16,7 @@ export const useTheme = () => {
   const dependencies = [mode];
   return useMemo(
     () => createTheme({
-      colors: { ...egaPalette },
+      colors: egaPalette as any,
       shape: {
         borderRadius: 4,
       },
@@ -33,12 +34,14 @@ export const useTheme = () => {
           primary: isDark ? egaPalette.lightGray : egaPalette.black,
         },
         ...paletteColors,
+        monoAmberPalette,
+        monoGreenPalette,
         primary: {
-          main: egaPalette.blue,
+          main: isDark ? egaPalette.cyan : egaPalette.magenta,
           // contrastText: isDark ? "rgba(0, 0, 0, 0.87)" : "rgba(255, 255, 255, 0.87)",
         },
         secondary: {
-          main: egaPalette.magenta,
+          main: isDark ? egaPalette.magenta : egaPalette.cyan,
           // contrastText: isDark ? "rgba(0, 0, 0, 0.87)" : "rgba(255, 255, 255, 0.87)",
         },
         success: {
@@ -53,7 +56,7 @@ export const useTheme = () => {
         error: {
           main: egaPalette.red,
         },
-      }
+      } as PaletteOptions,
     }),
     dependencies)
 };

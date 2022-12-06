@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 import * as ReactDOM from 'react-dom';
-import { Context } from './state/Context';
+import { Context } from '../state/Context';
 import { App } from './App';
 
 describe('App', function () {

@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import LightMode from '@mui/icons-material/LightMode';
 import DarkMode from '@mui/icons-material/DarkMode';
 import { useThemeActions, useThemeSlice } from '../theme/theme-hooks';
+import '../types';
 
 export default () => {
   const { mode } = useThemeSlice();
