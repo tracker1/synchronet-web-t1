@@ -23,7 +23,7 @@ function HideOnScroll({ children }: { children: any }) {
   );
 }
 
-export default function HeaderBar() {
+const HeaderBar: React.FC<{ title: string }> = ({ title }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -49,7 +49,7 @@ export default function HeaderBar() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Photos
+              {title}
             </Typography>
             <div>
               <IconButton
@@ -88,3 +88,5 @@ export default function HeaderBar() {
     </header>
   );
 }
+
+export default HeaderBar;

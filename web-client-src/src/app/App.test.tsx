@@ -11,7 +11,10 @@ describe('App', function () {
     act(() => {
       ReactDOM.render(
         <Context>
-          <App />
+          <App title="Test">
+            <h1>Test</h1>
+            <p>Test Content</p>
+          </App>
         </Context>,
         container,
       );

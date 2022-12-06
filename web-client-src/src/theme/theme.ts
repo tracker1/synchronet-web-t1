@@ -27,7 +27,7 @@ export const useTheme = () => {
         mode,
         background: {
           default: isDark ? egaPalette.brightBlack : egaPalette.lightGray,
-          paper: isDark ? '#080808' : '#efefef',
+          paper: isDark ? '#111111' : '#efefef',
         },
         text: {
           primary: isDark ? egaPalette.lightGray : egaPalette.black,

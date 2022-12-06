@@ -22,7 +22,7 @@ export default () => {
         }}
       >
         <Toolbar variant="dense" sx={{
-          backgroundColor: (theme) => isDark ? theme.palette.background.paper : theme.palette.brightBlack.main
+          backgroundColor: (theme) => isDark ? "#292929" : theme.palette.brightBlack.main
         }}>
           <Stack
             direction="row"
