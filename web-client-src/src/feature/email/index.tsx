@@ -7,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-import { App } from "../../app";
+import { App } from "../app";
 
 export const EmailSection = () => {
   return (

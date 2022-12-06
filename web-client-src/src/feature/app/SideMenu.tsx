@@ -17,7 +17,7 @@ import ForumIcon from '@mui/icons-material/NoteAltOutlined';
 import FileIcon from '@mui/icons-material/FolderSharedOutlined';
 import DoorIcon from '@mui/icons-material/VideogameAssetOutlined';
 import SystemIcon from '@mui/icons-material/SettingsSuggestOutlined';
-import { useNavigationActions } from '../router';
+import { useNavigationActions } from '../../router';
 
 const drawerWidth = 240;
 

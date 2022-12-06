@@ -5,8 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import LightMode from '@mui/icons-material/LightMode';
 import DarkMode from '@mui/icons-material/DarkMode';
-import { useThemeActions, useThemeSlice } from '../theme/theme-hooks';
-import '../types';
+import { useThemeActions, useThemeSlice } from '../../theme/theme-hooks';
+import '../../types';
 
 export default () => {
   const { mode } = useThemeSlice();
@@ -35,7 +35,7 @@ export default () => {
             }}
           >
             <div>TODO: FOOTER</div>
-            <Button color={isDark ? "white" : "brightWhite"} onClick={themeAction.toggleDarkMode}>
+            <Button color={(isDark ? "white" : "brightWhite") as any} onClick={themeAction.toggleDarkMode}>
               {isDark ? <DarkMode /> : <LightMode />}
             </Button>
           </Stack>

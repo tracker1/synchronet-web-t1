@@ -4,20 +4,12 @@ import { useAppSelector } from "../../state";
 import { selectCount } from "./counterSlice";
 import { useCounterActions } from "./useCounterActions";
 
-import { styled } from "@mui/material/styles";
 import Stack from "@mui/material/Stack";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { App } from "../../app";
-
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(2),
-  padding: theme.spacing(2),
-}));
+import { PagePaper } from "../components/PagePaper"
 
 export function Counter() {
   const count = useAppSelector(selectCount);
@@ -26,7 +18,7 @@ export function Counter() {
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
-    <StyledPaper elevation={5}>
+    <PagePaper elevation={5}>
       <Stack direction="column" spacing={3}>
         <ButtonGroup size="small" aria-label="small outlined button group">
           <Button size="large" variant="contained" onClick={() => action.decrement()}>-</Button>
@@ -59,6 +51,6 @@ export function Counter() {
           </Button>
         </Stack>
       </Stack>
-    </StyledPaper>
+    </PagePaper>
   );
 }

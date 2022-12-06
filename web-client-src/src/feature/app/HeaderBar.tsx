@@ -1,15 +1,17 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import LightMode from '@mui/icons-material/LightMode';
+import DarkMode from '@mui/icons-material/DarkMode';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { useThemeActions, useThemeSlice } from '../../theme/theme-hooks';
 
 function HideOnScroll({ children }: { children: any }) {
   const trigger = useScrollTrigger({
@@ -25,6 +27,9 @@ function HideOnScroll({ children }: { children: any }) {
 
 const HeaderBar: React.FC<{ title: string }> = ({ title }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const { mode } = useThemeSlice();
+  const themeAction = useThemeActions();
+  const isDark = mode === "dark";
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -51,6 +56,16 @@ const HeaderBar: React.FC<{ title: string }> = ({ title }) => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {title}
             </Typography>
+            <div>
+              <IconButton
+                size="large"
+                aria-label={isDark ? "Switch to light mode." : "Switch to dark mode."}
+                color="inherit"
+                onClick={themeAction.toggleDarkMode}
+              >
+                {isDark ? <DarkMode /> : <LightMode />}
+              </IconButton>
+            </div>
             <div>
               <IconButton
                 size="large"

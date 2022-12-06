@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import { App } from "../../app";
+import { App } from "../app";
 
 export const DoorSection = () => {
   return (

@@ -4,8 +4,11 @@ import { egaPalette, monoAmberPalette, monoGreenPalette } from './palette';
 import { useThemeSlice } from './theme-hooks';
 import '../types';
 
+const augmentColor = createTheme().palette.augmentColor;
+const createColor = (mainColor: string) => augmentColor({ color: { main: mainColor } });
+
 const paletteColors: Partial<PaletteOptions> = Object.entries(egaPalette).reduce(
-  (o, [key, value]) => Object.assign(o, { [key]: ({ main: value }) }),
+  (o, [key, value]) => Object.assign(o, { [key]: createColor(value) }),
   {}
 );
 
