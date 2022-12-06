@@ -45,6 +45,7 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
+    "postbuild": "./_scripts/postbuild",
     "preview": "vite preview",
     "test": "jest"
   }

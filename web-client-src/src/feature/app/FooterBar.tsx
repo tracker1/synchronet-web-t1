@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import LightMode from '@mui/icons-material/LightMode';
 import DarkMode from '@mui/icons-material/DarkMode';
 import { useThemeActions, useThemeSlice } from '../../theme/theme-hooks';
@@ -35,9 +35,15 @@ export default () => {
             }}
           >
             <div>TODO: FOOTER</div>
-            <Button color={(isDark ? "white" : "brightWhite") as any} onClick={themeAction.toggleDarkMode}>
+            <IconButton
+              size="large"
+              title={isDark ? "Switch to light mode." : "Switch to dark mode."}
+              aria-label={isDark ? "Switch to light mode." : "Switch to dark mode."}
+              color="inherit"
+              onClick={themeAction.toggleDarkMode}
+            >
               {isDark ? <DarkMode /> : <LightMode />}
-            </Button>
+            </IconButton>
           </Stack>
         </Toolbar>
       </AppBar>

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/../"
+echo $PWD
+
+if [ ! -d "dist" ]; then
+  # Take action if $DIR exists. #
+  echo "No dist directory"
+  exit
+fi
+
+echo "Compressing"
+cd ./dist
+rm -f ./*.gz ./**/*.gz ./*.br ./**/*.br ./*.zst ./**/*.zst
+find . -type f ! -name '*.woff' ! -name '*.woff2' ! -name '*.png' ! -name '*.gz' ! -name '*.br' ! -name '*.zst' -exec zopfli --i25 --gzip  "{}" \;
+find . -type f ! -name '*.woff' ! -name '*.woff2' ! -name '*.png' ! -name '*.gz' ! -name '*.br' ! -name '*.zst' -exec brotli -9 -k  "{}" \;
+find . -type f ! -name '*.woff' ! -name '*.woff2' ! -name '*.png' ! -name '*.gz' ! -name '*.br' ! -name '*.zst' -exec zstd -19 -k  "{}" \;

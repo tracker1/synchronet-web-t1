@@ -59,6 +59,7 @@ const HeaderBar: React.FC<{ title: string }> = ({ title }) => {
             <div>
               <IconButton
                 size="large"
+                title={isDark ? "Switch to light mode." : "Switch to dark mode."}
                 aria-label={isDark ? "Switch to light mode." : "Switch to dark mode."}
                 color="inherit"
                 onClick={themeAction.toggleDarkMode}
