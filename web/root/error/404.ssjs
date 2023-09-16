@@ -9,6 +9,8 @@ if (/^\/sbbs-api\//.test(http_request.virtual_path)) {
 } else {
   // Single Page Application
   // load("lib/web/index-spa-html.js");
+
+  // 301 Redirect
   http_reply.status = '301 Moved';
   http_reply.header.pragma = 'no-cache';
   http_reply.header.expires = '0';

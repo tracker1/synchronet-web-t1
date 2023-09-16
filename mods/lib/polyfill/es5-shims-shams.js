@@ -363,7 +363,7 @@ if (!Function.prototype.bind) {
 
     var aArgs = Array.prototype.slice.call(arguments, 1),
       fToBind = this,
-      fNOP = function () {},
+      fNOP = function () { },
       fBound = function () {
         return fToBind.apply(
           this instanceof fNOP ? this : oThis,
@@ -551,7 +551,7 @@ if (!Object.create) {
   // Reference: http://es5.github.io/#x15.2.3.5
   Object.create = (function () {
     // To save on memory, use a shared constructor
-    function Temp() {}
+    function Temp() { }
 
     // make a safe reference to Object.prototype.hasOwnProperty
     var hasOwn = Object.prototype.hasOwnProperty;
