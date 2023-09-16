@@ -1,6 +1,3 @@
-
-
-
 /**
  * Get general ui options to use
  * 

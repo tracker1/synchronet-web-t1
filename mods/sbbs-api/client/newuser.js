@@ -1,6 +1,3 @@
-
-
-
 /**
  * Get newUser questions/options to use.
  * 
